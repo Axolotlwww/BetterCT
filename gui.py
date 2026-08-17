@@ -364,7 +364,7 @@ def build_about_page(parent):
 
     link = tk.Label(
         parent,
-        text="GitHub: https://github.com/your-repo",
+        text="GitHub: https://github.com/Axolotlwww/BetterCT",
         fg="blue",
         cursor="hand2",
         font=("Arial", 10),
