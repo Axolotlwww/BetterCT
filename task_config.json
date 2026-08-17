@@ -1,0 +1,70 @@
+[
+  {
+    "name": "启动游戏(务必放在最前面)",
+    "active": false
+  },
+  {
+    "name": "邮件",
+    "active": false
+  },
+  {
+    "name": "免费召唤",
+    "active": false
+  },
+  {
+    "name": "福利",
+    "active": false
+  },
+  {
+    "name": "失控练成阵",
+    "active": false
+  },
+  {
+    "name": "竞技场",
+    "active": false
+  },
+  {
+    "name": "竞技场领奖",
+    "active": false
+  },
+  {
+    "name": "特惠礼包",
+    "active": false
+  },
+  {
+    "name": "荣耀之巅",
+    "active": false
+  },
+  {
+    "name": "荣耀之巅领奖",
+    "active": true
+  },
+  {
+    "name": "公会",
+    "active": true
+  },
+  {
+    "name": "社交",
+    "active": true
+  },
+  {
+    "name": "冒险-讨伐",
+    "active": true
+  },
+  {
+    "name": "冒险-素材关卡",
+    "active": true
+  },
+  {
+    "name": "冒险-辉煌航迹",
+    "active": true
+  },
+  {
+    "name": "冒险-辉煌航迹领奖",
+    "active": true
+  },
+  {
+    "name": "集市",
+    "active": true
+  }
+]
