@@ -7,6 +7,8 @@ import time
 import webbrowser
 import json
 import main
+import os
+import sys
 
 # ==================== 任务函数（模拟外部库，会阻塞） ====================
 # 这些函数会被替换为另一个库内的函数，请确保它们可以被 pickle（顶层函数）
@@ -46,12 +48,21 @@ drag_index = None                 # 拖拽排序时的源索引
 
 cancel_all = threading.Event()   # 用于中止一键启动的整个顺序
 
-
+def get_base_path():
+    """返回可执行文件所在目录（打包后为 exe 所在文件夹，开发时为项目根目录）"""
+    if getattr(sys, 'frozen', False):
+        # 打包后，sys.executable 是 exe 的完整路径
+        return os.path.dirname(sys.executable)
+    else:
+        # 开发环境，返回当前工作目录（你的项目文件夹）
+        return os.path.abspath(".")
+    
 def load_config():
     """从 JSON 文件加载任务顺序和激活状态，并更新全局 tasks 列表。"""
     global tasks
+    config_file = os.path.join(get_base_path(), CONFIG_FILE)   # 新增这一行
     try:
-        with open(CONFIG_FILE, "r", encoding="utf-8") as f:
+        with open(config_file, "r", encoding="utf-8") as f:
             config = json.load(f)
         # config 预期格式：[{"name": "任务一", "active": true}, ...]
         # 根据名字重新排序 tasks，并更新 active
@@ -77,8 +88,9 @@ def load_config():
 def save_config():
     """将当前任务顺序和激活状态保存到 JSON 文件。"""
     config = [{"name": task["name"], "active": task["active"]} for task in tasks]
+    config_file = os.path.join(get_base_path(), CONFIG_FILE)
     try:
-        with open(CONFIG_FILE, "w", encoding="utf-8") as f:
+        with open(config_file, "w", encoding="utf-8") as f:
             json.dump(config, f, ensure_ascii=False, indent=2)
     except IOError:
         # 忽略保存错误（例如权限问题）

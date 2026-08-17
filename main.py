@@ -1,8 +1,17 @@
 import subprocess
 import pyautogui
-import os
-import json
 import time
+import sys
+import os
+
+def get_base_path():
+    """返回可执行文件所在目录（打包后为 exe 目录，开发时为项目根目录）"""
+    if getattr(sys, 'frozen', False):
+        # 打包后，sys.executable 是 exe 的完整路径
+        return os.path.dirname(sys.executable)
+    else:
+        # 开发环境，返回当前工作目录（或脚本所在目录）
+        return os.path.abspath(".")
 
 scr_w, scr_h = pyautogui.size()
 print(f"屏幕分辨率: {scr_w} x {scr_h}")
@@ -46,7 +55,9 @@ for image_path in images:
         sys.exit(1)
 """
 def locate(image,confidence=0.8,region=(0,0,scr_w,scr_h)):
-    image_path="images/"+image
+    #image_path="images/"+image
+    image_path=os.path.join(get_base_path(), "images", image)
+    
     region = tuple(round(v) for v in region)
     try:
         button_center = pyautogui.locateCenterOnScreen(
