@@ -135,6 +135,43 @@
 - 任务奖励领取
 - 公会签到
 
+# 安装
+
+### 安装本体
+
+下载*betterct-0.1.0-py3-none-any.whl*后将它放一个合适的位置,**最好是空的文件夹**
+
+点击地址栏输入`cmd`,回车,打开命令提示符
+
+输入`pip install betterct-0.1.0-py3-none-any.whl`,回车,等待安装完成
+
+输入`pip show BetterCT`可检查安装情况
+
+### 适配环境
+
+如果遇到“缺少依赖”或“PyAutoGUI 报错”可以使用如下办法:
+
+- 命令行输入`winget install Python.Python.3.12`,待安装完成后关闭命令行
+- 在安装的文件夹点击地址栏输入`cmd`回车打开命令行
+- 命令行输入`pip uninstall BetterCT`,回车,删除原有BetterCT
+- 新的命令行输入`py -3.12 -m venv venv312`,回车,创建Python 3.12的虚拟环境
+- 命令行输入`venv312\Scripts\activate`,回车,激活虚拟环境
+- 命令行输入`pip install betterct-0.1.0-py3-none-any.whl`,回车
+
+### 如何运行
+
+- 在安装的文件夹点击地址栏输入`cmd`回车打开命令行
+-  - 如果使用了上面适配环境中的*虚拟环境*,输入`venv312\Scripts\activate.bat`回车
+- 命令行输入`python -m BetterCT.gui`回车即可打开图形化界面
+
+### 如何卸载
+- 在安装的文件夹点击地址栏输入`cmd`回车打开命令行
+- - 如果使用了上面适配环境中的*虚拟环境*,输入`venv312\Scripts\activate.bat`回车
+- 命令行输入`pip uninstall BetterCT`,回车
+- 命令行输入`y`回车
+
+
+
 ---
 
 按**F12**可以终止正在执行的程序,
